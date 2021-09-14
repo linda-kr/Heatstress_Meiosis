@@ -6,12 +6,12 @@
 #   Project         : Consultation Arp Schnittger and Joke De Jaeger-Breat, Meiosis / Heat stress analysis                                                                       
 #   Author          : Linda Krause                                                                    
 #   Purpose         : Data preparation (from the raw data Excel file to Stata file which can be used in survival analysis)                                                                       
-#   Date            : 22.06.2021                                                                       
+#   Date            : 14.09.2021                                                                       
 #   Program Version : V1											  
 #   R Version       : 3.5.3                                                                       
 #
 #
-#   Input data files  : RawDataImaging_28022020_SPLIT_220920_revised091220_LK.xlsx and RawData_mutants_completed_FL_080121_LK.xlsx                                                               
+#   Input data files  : tpc00547-SupplementalDataSets1.xlsx and tpc00547-SupplementalDataSets2.xlsx                                                               
 #   Output data files : sum_values.dta and sum_values_mutations.dta                                                               
 #                                                                                     
 #     
@@ -37,8 +37,8 @@ library(xlsx)
 
 
 # set path to raw data in Excel formal
-namedat1 = "../Data/RawDataImaging_28022020_SPLIT_220920_revised091220_LK.xlsx"
-namedat2 = "../Data/RawData_mutants_completed_FL_080121_LK.xlsx"
+namedat1 = "../Data/tpc00547-SupplementalDataSets1.xlsx"
+namedat2 = "../Data/tpc00547-SupplementalDataSets2.xlsx"
 
 
 
@@ -506,7 +506,7 @@ calculateTimeinEachStage = function(ord_values, treatment){
 ## Control
 
 ### load data
-dat = read.xlsx(namedat1, sheetIndex = 1)
+dat = read.xlsx(namedat1, sheetIndex = 2)
 
 # check and remove complete NA row
 idx = which(apply(is.na(dat), 1, sum) == dim(dat)[2])
@@ -572,7 +572,7 @@ sum_values_control = calculateTimeinEachStage(ord_values, "control")
 ## Treatment 1 week 30 degress
 
 ### load data
-dat = read.xlsx(namedat1, sheetIndex = 4)
+dat = read.xlsx(namedat1, sheetIndex = 5)
 
 # check and remove complete NA row
 idx = which(apply(is.na(dat), 1, sum) == dim(dat)[2])
@@ -637,7 +637,7 @@ sum_values_oneweek30 = calculateTimeinEachStage(ord_values, "oneweek30")
 ## Treatment heatshock 30 degrees - stimulation in time A
 
 ### load data
-dat = read.xlsx(namedat1, sheetIndex = 2)
+dat = read.xlsx(namedat1, sheetIndex = 3)
 
 # check and remove complete NA row
 idx = which(apply(is.na(dat), 1, sum) == dim(dat)[2])
@@ -709,7 +709,7 @@ sum_values_HS30_A = calculateTimeinEachStage(ord_values, "HS30_A")
 ## Treatment heatshock 30 degrees - stimulation in time B
 
 ### load data
-dat = read.xlsx(namedat1, sheetIndex = 2)
+dat = read.xlsx(namedat1, sheetIndex = 3)
 
 # check and remove complete NA row
 idx = which(apply(is.na(dat), 1, sum) == dim(dat)[2])
@@ -778,7 +778,7 @@ sum_values_HS30_B = calculateTimeinEachStage(ord_values, "HS30_B")
 ## Treatment heatshock 34 degrees - stimulation in time A
 
 ### load data
-dat = read.xlsx(namedat1, sheetIndex = 3)
+dat = read.xlsx(namedat1, sheetIndex = 4)
 
 
 # check and remove complete NA row
@@ -852,7 +852,7 @@ sum_values_HS34_A = calculateTimeinEachStage(ord_values, "HS34_A")
 ## Treatment heatshock 34 degrees - stimulation in time B
 
 ### load data
-dat = read.xlsx(namedat1, sheetIndex = 3)
+dat = read.xlsx(namedat1, sheetIndex = 4)
 
 
 # check and remove complete NA row
@@ -942,7 +942,7 @@ saveRDS(df, file = "sum_values.Rds")
 ## DMC1 control
 
 ### load data
-dat = read.xlsx(namedat2, sheetIndex = 1)
+dat = read.xlsx(namedat2, sheetIndex = 2)
 
 # check and remove complete NA row
 idx = which(apply(is.na(dat), 1, sum) == dim(dat)[2])
@@ -1009,7 +1009,7 @@ sum_values_dmc1_control = calculateTimeinEachStage(ord_values, "DMC_control")
 ## DMC1 HS34
 
 ### load data
-dat = read.xlsx(namedat2, sheetIndex = 2)
+dat = read.xlsx(namedat2, sheetIndex = 3)
 
 
 # check and remove complete NA row
@@ -1077,7 +1077,7 @@ sum_values_dmc1_HS34 = calculateTimeinEachStage(ord_values, "DMC_HS34")
 ## SPO11 control
 
 ### load data
-dat = read.xlsx(namedat2, sheetIndex = 3)
+dat = read.xlsx(namedat2, sheetIndex = 4)
 
 
 # check and remove complete NA row
@@ -1147,7 +1147,7 @@ sum_values_spo11_control = calculateTimeinEachStage(ord_values, "SPO11_control")
 ## SPO11 HS34
 
 ### load data
-dat = read.xlsx(namedat2, sheetIndex = 4)
+dat = read.xlsx(namedat2, sheetIndex = 5)
 
 
 # check and remove complete NA row
@@ -1217,7 +1217,7 @@ sum_values_spo11_HS34 = calculateTimeinEachStage(ord_values, "SPO11_HS34")
 ## MSH control
 
 ### load data
-dat = read.xlsx(namedat2, sheetIndex = 5)
+dat = read.xlsx(namedat2, sheetIndex = 6)
 
 
 # check and remove complete NA row
@@ -1284,7 +1284,7 @@ sum_values_msh_control = calculateTimeinEachStage(ord_values, "MSH_control")
 ## MSH HS34
 
 ### load data
-dat = read.xlsx(namedat2, sheetIndex = 6)
+dat = read.xlsx(namedat2, sheetIndex = 7)
 
 
 # check and remove complete NA row
@@ -1351,7 +1351,7 @@ sum_values_msh_HS34 = calculateTimeinEachStage(ord_values, "MSH_HS34")
 ## ATM control
 
 ### load data
-dat = read.xlsx(namedat2, sheetIndex = 7)
+dat = read.xlsx(namedat2, sheetIndex = 8)
 
 
 # check and remove complete NA row
@@ -1418,7 +1418,7 @@ sum_values_atm_control = calculateTimeinEachStage(ord_values, "ATM_control")
 ## ATM HS34
 
 ### load data
-dat = read.xlsx(namedat2, sheetIndex = 8)
+dat = read.xlsx(namedat2, sheetIndex = 9)
 
 
 # check and remove complete NA row
